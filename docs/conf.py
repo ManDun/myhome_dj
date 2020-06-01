@@ -21,7 +21,7 @@ import sys
 
 # -- Project information -----------------------------------------------------
 
-project = "My Home DJ"
+project = "My Home in Django"
 copyright = """2020, Manas Mallick"""
 author = "Manas Mallick"
 

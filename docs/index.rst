@@ -1,9 +1,9 @@
-.. My Home DJ documentation master file, created by
+.. My Home in Django documentation master file, created by
    sphinx-quickstart.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to My Home DJ's documentation!
+Welcome to My Home in Django's documentation!
 ======================================================================
 
 .. toctree::
