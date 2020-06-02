@@ -14,7 +14,7 @@ RUN apt-get update \
   && apt-get install -y gettext \
   && apt-get install -y libjpeg-dev \
   && apt-get install -y libffi-dev \
-  && apt-get install -y zlib1g-dev
+  && apt-get install -y zlib1g-dev \
   # cleaning up unused files
   && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
   && rm -rf /var/lib/apt/lists/*
