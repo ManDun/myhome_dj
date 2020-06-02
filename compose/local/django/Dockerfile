@@ -16,7 +16,6 @@ RUN apt-get update \
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements /requirements
-RUN pip3 install --upgrade --force-reinstall pillow
 RUN pip3 install -r /requirements/local.txt
 
 COPY ./compose/production/django/entrypoint /entrypoint
