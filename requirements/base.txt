@@ -1,6 +1,5 @@
 pytz  # https://github.com/stub42/pytz
 python-slugify  # https://github.com/un33k/python-slugify
-libjpeg-dev
 Pillow  # https://github.com/python-pillow/Pillow
 #argon2-cffi  # https://github.com/hynek/argon2_cffi
 redis  # https://github.com/andymccurdy/redis-py
