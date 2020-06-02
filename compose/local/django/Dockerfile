@@ -3,7 +3,7 @@ FROM python:3.8-slim-buster
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 
-RUN pip3 install --upgrade pip3
+RUN pip3 install --upgrade pip
 
 RUN apt-get update \
   # dependencies for building Python packages
