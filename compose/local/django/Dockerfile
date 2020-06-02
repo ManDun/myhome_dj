@@ -10,6 +10,8 @@ RUN apt-get update \
   && apt-get install -y libpq-dev \
   # Translations dependencies
   && apt-get install -y gettext \
+  && apt-get install -y libjpeg-dev \
+  && apt-get install -y libffi-dev \
   # cleaning up unused files
   && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
   && rm -rf /var/lib/apt/lists/*
@@ -17,7 +19,7 @@ RUN apt-get update \
 # Requirements are installed here to ensure they will be cached.
 # RUN apt-get install libjpeg-dev
 COPY ./requirements /requirements
-RUN sudo pip3 install -r /requirements/local.txt
+RUN pip3 install -r /requirements/local.txt
 
 COPY ./compose/production/django/entrypoint /entrypoint
 RUN sed -i 's/\r$//g' /entrypoint
