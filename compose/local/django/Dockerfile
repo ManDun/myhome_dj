@@ -17,7 +17,7 @@ RUN apt-get update \
 # Requirements are installed here to ensure they will be cached.
 # RUN apt-get install libjpeg-dev
 COPY ./requirements /requirements
-RUN pip3 install -r /requirements/local.txt
+RUN sudo pip3 install -r /requirements/local.txt
 
 COPY ./compose/production/django/entrypoint /entrypoint
 RUN sed -i 's/\r$//g' /entrypoint
