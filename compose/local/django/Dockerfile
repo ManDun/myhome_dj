@@ -15,7 +15,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 # Requirements are installed here to ensure they will be cached.
-RUN apt-get install libjpeg-dev
+# RUN apt-get install libjpeg-dev
 COPY ./requirements /requirements
 RUN pip3 install -r /requirements/local.txt
 
