@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block content %}
+<div class="jumbotron">
+  <h1 class="display-4">Add Income</h1>
+  <p class="lead">Use this page to add income for the date.</p>
+  <hr class="my-4" />
+  <p>
+    To add logs, click on Add + and enter your details
+    today.
+  </p>
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addIncomeModal">
+    Add Income
+  </button>
+  <a class="btn btn-secondary btn-lg" href="{% url 'myfinances:incomeshome' %}" role="button">View Incomes</a>
+  
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-10">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Type</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Details</th>
+          <th scope="col">File</th>
+        </tr>
+      </thead>
+      
+    </table>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addIncomeModal" data-backdrop="static" tabindex="-1" role="dialog"
+  aria-labelledby="addIncomeModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addExpenseModalLabel">Add Income</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="POST" enctype="multipart/form-data">
+        
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
