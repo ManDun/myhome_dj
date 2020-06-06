@@ -44,13 +44,13 @@ def expensehome(request):
                 today = datetime.date.today()    
 
                 if frequency in 'yearly':
-                    expenses_filtered = expenses.filter(ExtractYear(Expenses.date_of_expense) == selecteddate.year).all()
+                    expenses_filtered = expenses.filter(ExtractYear(Expenses.date_of_expense) = selecteddate.year)
                 elif frequency in 'monthly':
-                    expenses_filtered = expenses.filter((ExtractMonth(Expenses.date_of_expense) == selecteddate.month)).all()
+                    expenses_filtered = expenses.filter((ExtractMonth(Expenses.date_of_expense) = selecteddate.month))
                 elif frequency in 'daily':
-                    expenses_filtered = expenses.filter((ExtractDay(Expenses.date_of_expense) == selecteddate.day)).all()
+                    expenses_filtered = expenses.filter((ExtractDay(Expenses.date_of_expense) = selecteddate.day))
                 else:
-                    expenses_filtered = expenses.filter(Expenses.date_of_expense == today & Expenses.user_id == user_id).all()
+                    expenses_filtered = expenses.filter(Expenses.date_of_expense = today)
 
         return render(request, 'expenses/expenseshome.html', {'form': form, 'expenses': expenses_filtered})
 
