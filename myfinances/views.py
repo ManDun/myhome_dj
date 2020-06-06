@@ -24,7 +24,10 @@ def expensehome(request):
 
     else:
         user_id = request.user.id
+        today = datetime.date.today()
         expenses = Expenses.objects.filter(user_id=user_id)
+
+        expenses_filtered = Expenses.objects.filter(user_id=user_id, date_of_expense = today)
 
         form = forms.SearchExpenseForm()
 
@@ -41,15 +44,15 @@ def expensehome(request):
                 today = datetime.date.today()    
 
                 if frequency in 'yearly':
-                    expenses = expenses.objects.filter(ExtractYear(Expenses.date_of_expense) == selecteddate.year & Expenses.user_id == user_id).all()
+                    expenses_filtered = expenses.filter(ExtractYear(Expenses.date_of_expense) == selecteddate.year).all()
                 elif frequency in 'monthly':
-                    expenses = expenses.objects.filter((ExtractMonth(Expenses.date_of_expense) == selecteddate.month) & Expenses.user_id == user_id).all()
+                    expenses_filtered = expenses.filter((ExtractMonth(Expenses.date_of_expense) == selecteddate.month)).all()
                 elif frequency in 'daily':
-                    expenses = expenses.objects.filter((ExtractDay(Expenses.date_of_expense) == selecteddate.day) & Expenses.user_id == user_id).all()
+                    expenses_filtered = expenses.filter((ExtractDay(Expenses.date_of_expense) == selecteddate.day)).all()
                 else:
-                    expenses = expenses.objects.filter(Expenses.date_of_expense == today & Expenses.user_id == user_id).all()
+                    expenses_filtered = expenses.filter(Expenses.date_of_expense == today & Expenses.user_id == user_id).all()
 
-        return render(request, 'expenses/expenseshome.html', {'form': form, 'expenses': expenses})
+        return render(request, 'expenses/expenseshome.html', {'form': form, 'expenses': expenses_filtered})
 
 
 def addexpense(request):
