@@ -5,6 +5,7 @@ Pillow  # https://github.com/python-pillow/Pillow
 django[argon2]  # https://github.com/hynek/argon2_cffi
 redis  # https://github.com/andymccurdy/redis-py
 hiredis  # https://github.com/redis/hiredis-py
+msal
 
 # Django
 # ------------------------------------------------------------------------------

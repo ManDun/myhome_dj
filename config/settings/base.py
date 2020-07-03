@@ -23,7 +23,7 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # though not all of them may be available with every OS.
 # In Windows, this must be set to your system time zone.
-TIME_ZONE = "UTC"
+TIME_ZONE = "Australia/Brisbane"
 # https://docs.djangoproject.com/en/dev/ref/settings/#language-code
 LANGUAGE_CODE = "en-us"
 # https://docs.djangoproject.com/en/dev/ref/settings/#site-id
@@ -40,7 +40,7 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
-DATABASES = {"default": env.db("DATABASE_URL")}
+DATABASES = {"default": env.db("DATABASE_URL", default="sqlite:///data.sqlite")}
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 # URLS
@@ -131,6 +131,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.common.BrokenLinkEmailsMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "myhome_dj.middleware.LoginRequiredMiddleware"
 ]
 
 # STATIC
@@ -181,6 +182,7 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
                 "myhome_dj.utils.context_processors.settings_context",
+                "django.core.context_processors.auth"
             ],
         },
     }
@@ -277,3 +279,35 @@ REST_FRAMEWORK = {
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
+LOGIN_URL_NAME = 'loginsso'
+LOGOUT_URL_NAME = 'logoutsso'
+LOGIN_EXEMPT_URLS = ('signin')
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+CLIENT_ID = "0dc6023f-e479-4724-82c1-17e9b44262b2" # Application (client) ID of app registration
+
+CLIENT_SECRET = ""# Placeholder - for use ONLY during testing.
+# In a production app, we recommend you use a more secure method of storing your secret,
+# like Azure Key Vault. Or, use an environment variable as described in Flask's documentation:
+# https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
+# CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+# if not CLIENT_SECRET:
+#     raise ValueError("Need to define CLIENT_SECRET environment variable")
+
+AUTHORITY = "https://login.microsoftonline.com/43f93f8a-55a8-4263-bd84-e03688a2ab2d"  # For multi-tenant app
+# AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
+
+REDIRECT_PATH = "/authorized"  # Used for forming an absolute URL to your redirect URI.
+                              # The absolute URL must match the redirect URI you set
+                              # in the app's registration in the Azure portal.
+
+# You can find more Microsoft Graph API endpoints from Graph Explorer
+# https://developer.microsoft.com/en-us/graph/graph-explorer
+ENDPOINT = 'https://graph.microsoft.com/v1.0/users'  # This resource requires no admin consent
+
+# You can find the proper permission names from this document
+# https://docs.microsoft.com/en-us/graph/permissions-reference
+SCOPE = ["User.ReadBasic.All"]
+
+SESSION_TYPE = "filesystem" 
