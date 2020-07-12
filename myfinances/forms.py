@@ -13,7 +13,7 @@ class ExpenseForm(forms.ModelForm):
     class Meta:
         model = Expenses
         widgets = {
-            'date_of_expense': DateInput,
+            'dateOfExpense': DateInput,
             'details': forms.Textarea(attrs={'rows':3})
         }
         fields = ['name', 'type', 'amount', 'details', 'date_of_expense']
