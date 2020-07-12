@@ -29,8 +29,8 @@ services:
     image: myhome_dj_production_postgres
     container_name: postgres
     volumes:
-      - /volumes/postgres/data:/var/lib/postgresql/data
-      - /volumes/postgres/data/backups:/backups
+      - /volumes/postgres11/data:/var/lib/postgresql/data
+      - /volumes/postgres11/data/backups:/backups
     ports:
       - "5432:5432"
     env_file:
