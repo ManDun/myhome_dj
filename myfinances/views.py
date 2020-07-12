@@ -27,7 +27,7 @@ def expensehome(request):
         today = datetime.date.today()
         expenses = Expenses.objects.filter(user_id=user_id)
 
-        expenses_filtered = Expenses.objects.filter(user_id=user_id, date_of_expense = today)
+        expenses_filtered = Expenses.objects.filter(user_id=user_id, dateOfExpense = today)
 
         form = forms.SearchExpenseForm()
 
@@ -64,7 +64,7 @@ def addexpense(request):
     else:
         today = datetime.date.today()
         user_id = request.user.id
-        expenses = Expenses.objects.filter(user_id = user_id, date_of_expense = today)
+        expenses = Expenses.objects.filter(user_id = user_id, dateOfExpense = today)
 
         form = forms.ExpenseForm()
 
