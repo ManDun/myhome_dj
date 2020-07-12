@@ -50,7 +50,7 @@ def expensehome(request):
                 elif frequency in 'daily':
                     expenses_filtered = expenses.filter((ExtractDay(Expenses.date_of_expense) == selecteddate.day))
                 else:
-                    expenses_filtered = expenses.filter(Expenses.date_of_expense = today)
+                    expenses_filtered = expenses.filter(Expenses.date_of_expense == today)
 
         return render(request, 'expenses/expenseshome.html', {'form': form, 'expenses': expenses_filtered})
 
