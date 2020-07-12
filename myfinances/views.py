@@ -48,8 +48,7 @@ def expensehome(request):
                 elif frequency in 'monthly':
                     expenses_filtered = expenses.filter(Expenses.dateOfExpense.month == selecteddate.month)
                 elif frequency in 'daily':
-                    print(f'Selected filter daily {selecteddate.day}, {Expenses.dateOfExpense.day}')
-                    expenses_filtered = expenses.filter(Expenses.dateOfExpense.day == selecteddate.day)
+                    expenses_filtered = expenses.filter(ExtractDay(Expenses.dateOfExpense) == selecteddate.day).all()
                 else:
                     expenses_filtered = expenses.filter(Expenses.dateOfExpense == today)
 
