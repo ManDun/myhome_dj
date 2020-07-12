@@ -16,7 +16,7 @@ class ExpenseForm(forms.ModelForm):
             'dateOfExpense': DateInput,
             'details': forms.Textarea(attrs={'rows':3})
         }
-        fields = ['name', 'type', 'amount', 'details', 'date_of_expense']
+        fields = ['name', 'type', 'amount', 'details', 'dateOfExpense']
 
 class SearchExpenseForm(forms.Form):
 
