@@ -46,9 +46,10 @@ def expensehome(request):
                 if frequency in 'yearly':
                     expenses_filtered = expenses.filter(ExtractYear(Expenses.date_of_expense) == selecteddate.year)
                 elif frequency in 'monthly':
-                    expenses_filtered = expenses.filter((ExtractMonth(Expenses.date_of_expense) == selecteddate.month))
+                    expenses_filtered = expenses.filter(ExtractMonth(Expenses.date_of_expense) == selecteddate.month)
                 elif frequency in 'daily':
-                    expenses_filtered = expenses.filter((ExtractDay(Expenses.date_of_expense) == selecteddate.day))
+                    print(f'Selected filter daily {selecteddate.day}, {ExtractDay(Expenses.date_of_expense)}')
+                    expenses_filtered = expenses.filter(ExtractDay(Expenses.date_of_expense) == selecteddate.day)
                 else:
                     expenses_filtered = expenses.filter(Expenses.date_of_expense == today)
 
