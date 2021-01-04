@@ -92,6 +92,8 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
 # DEFAULT_FILE_STORAGE = "myhome_dj.utils.storages.MediaRootS3Boto3Storage"
 # MEDIA_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/media/"
 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+
 # TEMPLATES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#templates
