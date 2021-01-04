@@ -14,6 +14,11 @@ SECRET_KEY = env(
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["*"])
 
+DATABASES = {
+    "default": env.db("DATABASE_URL", default="sqlite:///myhome_dj.db")
+}
+DATABASES["default"]["ATOMIC_REQUESTS"] = True
+
 # CACHES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#caches
