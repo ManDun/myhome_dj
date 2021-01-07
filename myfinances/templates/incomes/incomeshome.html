@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-4">Incomes Home</h1>
+  <p class="lead">Use this page to add, delete and view incomes</p>
+  <hr class="my-4">
+  <p>Select Date to view Logs for a particular date or month or year</p>
+  <a class="btn btn-primary btn-lg" href="{% url 'myfinances:addincome' %}">{% trans "Add Income" %}</a>
+</div>
+
+
+{% endblock %}

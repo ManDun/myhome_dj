@@ -11,3 +11,6 @@ sentry-sdk==0.14.4  # https://github.com/getsentry/sentry-python
 # ------------------------------------------------------------------------------
 django-storages[boto3]==1.9.1  # https://github.com/jschneier/django-storages
 django-anymail==7.1.0  # https://github.com/anymail/django-anymail
+django-debug-toolbar==2.2  # https://github.com/jazzband/django-debug-toolbar
+django-extensions==3.0.4  # https://github.com/django-extensions/django-extensions
+django-coverage-plugin==1.8.0  # https://github.com/nedbat/django_coverage_plugin

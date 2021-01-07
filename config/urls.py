@@ -17,6 +17,8 @@ urlpatterns = [
     path("users/", include("myhome_dj.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
+    path("myfinances/", include("myfinances.urls", namespace="myfinances")),
+    path("mypersonals/", include("mypersonals.urls", namespace="mypersonals"))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # API URLS
